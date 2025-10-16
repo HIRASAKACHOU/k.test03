@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本全国 観光者数データビジュアライゼーション 2024</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header h1::before {
+            content: "🗾";
+            font-size: 36px;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .controls-label {
+            color: #2c3e50;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .controls-label::before {
+            content: "📅";
+            font-size: 20px;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+        }
+        
+        .month-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .month-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .month-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .month-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        
+        .month-button.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+            transform: scale(1.05);
+        }
+        
+        .month-button span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .map-container {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        
+        .loading::before {
+            content: "🔄";
+            display: block;
+            font-size: 48px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 10px;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .info-footer {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 13px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-footer p {
+            margin: 5px 0;
+        }
+        
+        .current-month-display {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(102, 126, 234, 0.95);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .button-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .month-button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>日本全国 観光者数インタラクティブマップ 2024</h1>
+            <p>📍 月別で全国の観光者数分布を可視化 | 📊 統計データと地域比較が可能</p>
+        </div>
+        
+        <div class="controls">
+            <div class="controls-label">月を選択してください</div>
+            <div class="button-grid">
+                <button class="month-button active" onclick="loadMonth(1)">
+                    <span>1月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(2)">
+                    <span>2月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(3)">
+                    <span>3月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(4)">
+                    <span>4月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(5)">
+                    <span>5月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(6)">
+                    <span>6月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(7)">
+                    <span>7月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(8)">
+                    <span>8月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(9)">
+                    <span>9月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(10)">
+                    <span>10月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(11)">
+                    <span>11月</span>
+                </button>
+                <button class="month-button" onclick="loadMonth(12)">
+                    <span>12月</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <div class="current-month-display" id="current-month">1月のデータ</div>
+            <div class="loading" id="loading">読み込み中...</div>
+            <iframe id="map-frame" src="tourist_map_month_01.html" onload="hideLoading()"></iframe>
+        </div>
+        
+        <div class="info-footer">
+            <p>🔵 円のサイズは観光者数に比例 | 🖱️ マーカーをクリックして詳細情報を表示 | 📈 統計パネルでトップ5地区を確認</p>
+            <p>📊 データソース: city2024.csv (2024年 全国地区別観光者数データ) | 🗾 対象: 日本全国105地区</p>
+        </div>
+    </div>
+    
+    <script>
+        let currentMonth = 1;
+        
+        function loadMonth(month) {
+            currentMonth = month;
+            const monthStr = month.toString().padStart(2, '0');
+            const iframe = document.getElementById('map-frame');
+            const loading = document.getElementById('loading');
+            const monthDisplay = document.getElementById('current-month');
+            
+            // ローディング表示
+            loading.style.display = 'block';
+            
+            // 月の表示を更新
+            monthDisplay.textContent = `${month}月のデータ`;
+            monthDisplay.style.animation = 'none';
+            setTimeout(() => {
+                monthDisplay.style.animation = 'slideIn 0.5s ease-out';
+            }, 10);
+            
+            // iframeのソースを変更
+            iframe.src = `tourist_map_month_${monthStr}.html`;
+            
+            // アクティブボタンのスタイルを更新
+            const buttons = document.querySelectorAll('.month-button');
+            buttons.forEach((btn, index) => {
+                if (index + 1 === month) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+        
+        function hideLoading() {
+            const loading = document.getElementById('loading');
+            loading.style.display = 'none';
+        }
+        
+        // キーボードショートカット
+        document.addEventListener('keydown', function(e) {
+            if (e.key >= '1' && e.key <= '9') {
+                const month = parseInt(e.key);
+                if (month <= 12) {
+                    loadMonth(month);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                // 前の月
+                const prevMonth = currentMonth > 1 ? currentMonth - 1 : 12;
+                loadMonth(prevMonth);
+            } else if (e.key === 'ArrowRight') {
+                // 次の月
+                const nextMonth = currentMonth < 12 ? currentMonth + 1 : 1;
+                loadMonth(nextMonth);
+            }
+        });
+        
+        // 初期ローディングを非表示
+        window.addEventListener('load', function() {
+            setTimeout(hideLoading, 500);
+        });
+    </script>
+</body>
+</html>

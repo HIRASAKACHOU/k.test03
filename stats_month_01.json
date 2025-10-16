@@ -1,0 +1,39 @@
+{
+  "month": 1,
+  "total_visitors": 126242749,
+  "avg_visitors": 2686015.936170213,
+  "num_areas": 47,
+  "num_prefectures": 47,
+  "top_5": [
+    {
+      "rank": 1,
+      "name": "東京都",
+      "prefecture": "東京都",
+      "visitors": 20548395
+    },
+    {
+      "rank": 2,
+      "name": "静岡県",
+      "prefecture": "静岡県",
+      "visitors": 8698715
+    },
+    {
+      "rank": 3,
+      "name": "愛知県",
+      "prefecture": "愛知県",
+      "visitors": 8271242
+    },
+    {
+      "rank": 4,
+      "name": "神奈川県",
+      "prefecture": "神奈川県",
+      "visitors": 5412184
+    },
+    {
+      "rank": 5,
+      "name": "福岡県",
+      "prefecture": "福岡県",
+      "visitors": 5244064
+    }
+  ]
+}
