@@ -1,135 +1,347 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2024年 月別観光者数マップ</title>
+    <title>日本全国 観光者数インタラクティブマップ 2024</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Meiryo', 'メイリオ', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px;
-            background-color: #f5f5f5;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
+
+        .title {
             text-align: center;
-            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
-        .button-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
+
+        .month-selector {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
         }
-        .month-button {
+
+        .month-btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .month-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .month-btn.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border: none;
+            border-color: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
             padding: 20px;
+            overflow: hidden;
+        }
+
+        .stats-panel {
+            width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            overflow-y: auto;
+            max-height: calc(100vh - 200px);
+        }
+
+        .stats-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .stat-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .top-cities {
+            margin-top: 20px;
+        }
+
+        .top-cities-title {
             font-size: 18px;
             font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .month-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-        .month-button:active {
-            transform: translateY(0);
-        }
-        .info {
-            background-color: #e3f2fd;
-            border-left: 4px solid #2196F3;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 4px;
-        }
-        .info h3 {
-            margin-top: 0;
-            color: #1976D2;
-        }
-        .color-legend {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
-        .color-item {
+            color: #f39c12;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
-        .color-box {
-            width: 30px;
-            height: 30px;
-            border-radius: 4px;
+
+        .city-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .city-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .city-rank {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .city-info {
+            flex: 1;
+        }
+
+        .city-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 15px;
+        }
+
+        .city-prefecture {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 2px;
+        }
+
+        .city-visitors {
+            font-weight: bold;
+            color: #e74c3c;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .map-container {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .stats-panel {
+                width: 100%;
+                max-height: 300px;
+            }
+
+            .map-container {
+                height: 500px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🗾 2024年 月別観光者数マップ</h1>
-        
-        <div class="button-grid">
-            <button class="month-button" onclick="window.open('tourist_map_month_01.html', '_blank')">1月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_02.html', '_blank')">2月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_03.html', '_blank')">3月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_04.html', '_blank')">4月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_05.html', '_blank')">5月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_06.html', '_blank')">6月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_07.html', '_blank')">7月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_08.html', '_blank')">8月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_09.html', '_blank')">9月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_10.html', '_blank')">10月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_11.html', '_blank')">11月</button>
-            <button class="month-button" onclick="window.open('tourist_map_month_12.html', '_blank')">12月</button>
-
-        </div>
-        
-        <div class="info">
-            <h3>使い方</h3>
-            <p>上のボタンをクリックすると、選択した月の観光者数が地図上に表示されます。</p>
-            <p>地図上の円の大きさと色が観光者数を表しています。</p>
-            <ul>
-                <li>円の大きさ：観光者数に比例</li>
-                <li>円の色：観光者数の多さを表示（青→緑→黄→赤の順に多い）</li>
-                <li>円にマウスを重ねると詳細情報が表示されます</li>
-            </ul>
-        </div>
-        
-        <div class="color-legend">
-            <div class="color-item">
-                <div class="color-box" style="background-color: rgb(0, 0, 255);"></div>
-                <span>少ない</span>
-            </div>
-            <div class="color-item">
-                <div class="color-box" style="background-color: rgb(0, 255, 0);"></div>
-                <span>やや少ない</span>
-            </div>
-            <div class="color-item">
-                <div class="color-box" style="background-color: rgb(255, 255, 0);"></div>
-                <span>やや多い</span>
-            </div>
-            <div class="color-item">
-                <div class="color-box" style="background-color: rgb(255, 0, 0);"></div>
-                <span>多い</span>
-            </div>
+    <div class="header">
+        <div class="title">🗾 日本全国 観光者数インタラクティブマップ 2024</div>
+        <div class="month-selector">
+            <button class="month-btn active" onclick="loadMonth(1)">1月</button>
+            <button class="month-btn" onclick="loadMonth(2)">2月</button>
+            <button class="month-btn" onclick="loadMonth(3)">3月</button>
+            <button class="month-btn" onclick="loadMonth(4)">4月</button>
+            <button class="month-btn" onclick="loadMonth(5)">5月</button>
+            <button class="month-btn" onclick="loadMonth(6)">6月</button>
+            <button class="month-btn" onclick="loadMonth(7)">7月</button>
+            <button class="month-btn" onclick="loadMonth(8)">8月</button>
+            <button class="month-btn" onclick="loadMonth(9)">9月</button>
+            <button class="month-btn" onclick="loadMonth(10)">10月</button>
+            <button class="month-btn" onclick="loadMonth(11)">11月</button>
+            <button class="month-btn" onclick="loadMonth(12)">12月</button>
         </div>
     </div>
+
+    <div class="content-wrapper">
+        <div class="stats-panel" id="statsPanel">
+            <div class="stats-title">📊 1月のデータ</div>
+            <div class="stat-item">
+                <div class="stat-label">総観光者数:</div>
+                <div class="stat-value" id="totalVisitors">-</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">平均値:</div>
+                <div class="stat-value" id="avgVisitors">-</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">対象地区:</div>
+                <div class="stat-value" id="numAreas">-</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">都道府県:</div>
+                <div class="stat-value" id="numPrefectures">-</div>
+            </div>
+            
+            <div class="top-cities">
+                <div class="top-cities-title">
+                    <span>🏆</span>
+                    <span>トップ5地区</span>
+                </div>
+                <div id="topCitiesList"></div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe id="mapFrame" src="tourist_map_month_01.html"></iframe>
+        </div>
+    </div>
+
+    <!-- 統計データをJavaScriptに埋め込み -->
+    <script src="stats_data.js"></script>
+    
+    <script>
+        let currentMonth = 1;
+
+        function loadMonth(month) {
+            currentMonth = month;
+            
+            // ボタンのアクティブ状態を更新
+            document.querySelectorAll('.month-btn').forEach((btn, index) => {
+                if (index + 1 === month) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // 地図を更新
+            const mapFrame = document.getElementById('mapFrame');
+            mapFrame.src = `tourist_map_month_${month.toString().padStart(2, '0')}.html`;
+            
+            // 統計データを表示（埋め込みデータから）
+            try {
+                const stats = STATS_DATA[month];
+                
+                if (!stats) {
+                    console.error(`${month}月のデータが見つかりません`);
+                    return;
+                }
+                
+                // タイトル更新
+                document.querySelector('.stats-title').textContent = `📊 ${month}月のデータ`;
+                
+                // 統計値更新
+                document.getElementById('totalVisitors').textContent = `${stats.total_visitors.toLocaleString()}人`;
+                document.getElementById('avgVisitors').textContent = `${Math.round(stats.avg_visitors).toLocaleString()}人`;
+                document.getElementById('numAreas').textContent = `${stats.num_areas}地区`;
+                document.getElementById('numPrefectures').textContent = `${stats.num_prefectures}件`;
+                
+                // トップ5都市を更新
+                const topCitiesList = document.getElementById('topCitiesList');
+                topCitiesList.innerHTML = stats.top_5.map(city => `
+                    <div class="city-item">
+                        <div class="city-rank">${city.rank}</div>
+                        <div class="city-info">
+                            <div class="city-name">${city.name}</div>
+                            <div class="city-prefecture">${city.prefecture}</div>
+                        </div>
+                        <div class="city-visitors">${city.visitors.toLocaleString()}人</div>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('統計データの表示エラー:', error);
+            }
+        }
+
+        // ページ読み込み時に1月のデータを表示
+        window.addEventListener('load', () => {
+            loadMonth(1);
+        });
+
+        // キーボードショートカット
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '1' && e.key <= '9') {
+                const month = parseInt(e.key);
+                loadMonth(month);
+            } else if (e.key === 'ArrowLeft') {
+                const newMonth = currentMonth > 1 ? currentMonth - 1 : 12;
+                loadMonth(newMonth);
+            } else if (e.key === 'ArrowRight') {
+                const newMonth = currentMonth < 12 ? currentMonth + 1 : 1;
+                loadMonth(newMonth);
+            }
+        });
+    </script>
 </body>
 </html>
