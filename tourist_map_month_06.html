@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4a7de6658ca1db87c5da9c62e553aaed {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                top: 10px; right: 10px; width: 200px; 
+                background-color: white; z-index:9999; font-size:14px;
+                border:2px solid grey; border-radius: 5px; padding: 10px">
+    <h4 style="margin-top:0">6月 観光者数</h4>
+    <p><i class="fa fa-circle" style="color:blue"></i> 少ない (1,535～)</p>
+    <p><i class="fa fa-circle" style="color:green"></i> やや少ない</p>
+    <p><i class="fa fa-circle" style="color:orange"></i> やや多い</p>
+    <p><i class="fa fa-circle" style="color:red"></i> 多い (～669,516)</p>
+    <p style="margin-bottom:0; font-size:12px; color:gray;">
+    データ数: 54件<br>
+    円の大きさ: 観光者数に比例
+    </p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_4a7de6658ca1db87c5da9c62e553aaed" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4a7de6658ca1db87c5da9c62e553aaed = L.map(
+                "map_4a7de6658ca1db87c5da9c62e553aaed",
+                {
+                    center: [38.0, 140.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_45c49eaa9ad707d9fe08174da70f488c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_45c49eaa9ad707d9fe08174da70f488c.addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+            var circle_93f0f51529c5cad5d6bc9c55b90b4c02 = L.circle(
+                [43.0642, 141.3469],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 26301.10392196197, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_b8469010e4fd83d1e8526594cff681be = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61156b3c7cec76f5cb9b23d8fbcf2891 = $(`<div id="html_61156b3c7cec76f5cb9b23d8fbcf2891" style="width: 100.0%; height: 100.0%;"><b>札幌市中央区</b><br>観光者数: 542,625人</div>`)[0];
+                popup_b8469010e4fd83d1e8526594cff681be.setContent(html_61156b3c7cec76f5cb9b23d8fbcf2891);
+            
+        
+
+        circle_93f0f51529c5cad5d6bc9c55b90b4c02.bindPopup(popup_b8469010e4fd83d1e8526594cff681be)
+        ;
+
+        
+    
+    
+            circle_93f0f51529c5cad5d6bc9c55b90b4c02.bindTooltip(
+                `<div>
+                     札幌市中央区: 542,625人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b396697581db26412a1d8e9497dc2015 = L.circle(
+                [43.0907, 141.3409],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3529.4124691982715, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_51d9ff4469ff6b63e4834293b2680d0f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dbd002113bbc9cef3cce5260844cc736 = $(`<div id="html_dbd002113bbc9cef3cce5260844cc736" style="width: 100.0%; height: 100.0%;"><b>札幌市北区</b><br>観光者数: 35,589人</div>`)[0];
+                popup_51d9ff4469ff6b63e4834293b2680d0f.setContent(html_dbd002113bbc9cef3cce5260844cc736);
+            
+        
+
+        circle_b396697581db26412a1d8e9497dc2015.bindPopup(popup_51d9ff4469ff6b63e4834293b2680d0f)
+        ;
+
+        
+    
+    
+            circle_b396697581db26412a1d8e9497dc2015.bindTooltip(
+                `<div>
+                     札幌市北区: 35,589人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6fe3dfd4a5d82eb143cb8d8afab67f8a = L.circle(
+                [43.0764, 141.3644],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5325.014745906326, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_fba5111f5946412360236df3e9ac2354 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a2fd445fa484f0e50dfa92b949418db = $(`<div id="html_1a2fd445fa484f0e50dfa92b949418db" style="width: 100.0%; height: 100.0%;"><b>札幌市東区</b><br>観光者数: 75,570人</div>`)[0];
+                popup_fba5111f5946412360236df3e9ac2354.setContent(html_1a2fd445fa484f0e50dfa92b949418db);
+            
+        
+
+        circle_6fe3dfd4a5d82eb143cb8d8afab67f8a.bindPopup(popup_fba5111f5946412360236df3e9ac2354)
+        ;
+
+        
+    
+    
+            circle_6fe3dfd4a5d82eb143cb8d8afab67f8a.bindTooltip(
+                `<div>
+                     札幌市東区: 75,570人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_5d1d52140743a6db28609e4c7e4f36c1 = L.circle(
+                [43.0474, 141.4045],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3244.8539032488898, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_eace7c9c4d4fe0b5f71a6ccdb40c61bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a78ba7e88c9bdf94eef522e61010687d = $(`<div id="html_a78ba7e88c9bdf94eef522e61010687d" style="width: 100.0%; height: 100.0%;"><b>札幌市白石区</b><br>観光者数: 29,253人</div>`)[0];
+                popup_eace7c9c4d4fe0b5f71a6ccdb40c61bd.setContent(html_a78ba7e88c9bdf94eef522e61010687d);
+            
+        
+
+        circle_5d1d52140743a6db28609e4c7e4f36c1.bindPopup(popup_eace7c9c4d4fe0b5f71a6ccdb40c61bd)
+        ;
+
+        
+    
+    
+            circle_5d1d52140743a6db28609e4c7e4f36c1.bindTooltip(
+                `<div>
+                     札幌市白石区: 29,253人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_774148667788617fba75d3ff9e19e3db = L.circle(
+                [43.0314, 141.381],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6487.905362719355, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_7a50df2567c3138a1cb4b8623d8c3543 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3e4ca4ac59a92089b344fcaa631bad2 = $(`<div id="html_f3e4ca4ac59a92089b344fcaa631bad2" style="width: 100.0%; height: 100.0%;"><b>札幌市豊平区</b><br>観光者数: 101,463人</div>`)[0];
+                popup_7a50df2567c3138a1cb4b8623d8c3543.setContent(html_f3e4ca4ac59a92089b344fcaa631bad2);
+            
+        
+
+        circle_774148667788617fba75d3ff9e19e3db.bindPopup(popup_7a50df2567c3138a1cb4b8623d8c3543)
+        ;
+
+        
+    
+    
+            circle_774148667788617fba75d3ff9e19e3db.bindTooltip(
+                `<div>
+                     札幌市豊平区: 101,463人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_45cd410fd37b697dee941ca219702ebd = L.circle(
+                [42.989, 141.354],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6192.568063211284, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_3676eb44d825bab9e35b2a8375f2193a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e423fccdcd8bcd9746430bedbc56d121 = $(`<div id="html_e423fccdcd8bcd9746430bedbc56d121" style="width: 100.0%; height: 100.0%;"><b>札幌市南区</b><br>観光者数: 94,887人</div>`)[0];
+                popup_3676eb44d825bab9e35b2a8375f2193a.setContent(html_e423fccdcd8bcd9746430bedbc56d121);
+            
+        
+
+        circle_45cd410fd37b697dee941ca219702ebd.bindPopup(popup_3676eb44d825bab9e35b2a8375f2193a)
+        ;
+
+        
+    
+    
+            circle_45cd410fd37b697dee941ca219702ebd.bindTooltip(
+                `<div>
+                     札幌市南区: 94,887人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_cce303f7aeddaff33359d6957f2f8a9a = L.circle(
+                [43.0762, 141.301],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4640.160962421143, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_ca995590d87925ef63d12b9d3b101827 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2a89cb6bb1598ab8bb26f117f766ba67 = $(`<div id="html_2a89cb6bb1598ab8bb26f117f766ba67" style="width: 100.0%; height: 100.0%;"><b>札幌市西区</b><br>観光者数: 60,321人</div>`)[0];
+                popup_ca995590d87925ef63d12b9d3b101827.setContent(html_2a89cb6bb1598ab8bb26f117f766ba67);
+            
+        
+
+        circle_cce303f7aeddaff33359d6957f2f8a9a.bindPopup(popup_ca995590d87925ef63d12b9d3b101827)
+        ;
+
+        
+    
+    
+            circle_cce303f7aeddaff33359d6957f2f8a9a.bindTooltip(
+                `<div>
+                     札幌市西区: 60,321人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_068e49dc487d7448d2a03132ae5a4b7c = L.circle(
+                [43.0308, 141.4879],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2804.0935234781773, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_8c5ec305e4beb8f318ac35a36b292dbf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4c92f1dec025710ed76f9e3a5dbb54cb = $(`<div id="html_4c92f1dec025710ed76f9e3a5dbb54cb" style="width: 100.0%; height: 100.0%;"><b>札幌市厚別区</b><br>観光者数: 19,439人</div>`)[0];
+                popup_8c5ec305e4beb8f318ac35a36b292dbf.setContent(html_4c92f1dec025710ed76f9e3a5dbb54cb);
+            
+        
+
+        circle_068e49dc487d7448d2a03132ae5a4b7c.bindPopup(popup_8c5ec305e4beb8f318ac35a36b292dbf)
+        ;
+
+        
+    
+    
+            circle_068e49dc487d7448d2a03132ae5a4b7c.bindTooltip(
+                `<div>
+                     札幌市厚別区: 19,439人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_fb38f9042ceec9c5a0ce5745901c2d6d = L.circle(
+                [43.1213, 141.2461],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2576.57242261019, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_e6b2847a085c4892a208c0e046022095 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ab3f5b47d2ca8e5d064318aabe1c7b7f = $(`<div id="html_ab3f5b47d2ca8e5d064318aabe1c7b7f" style="width: 100.0%; height: 100.0%;"><b>札幌市手稲区</b><br>観光者数: 14,373人</div>`)[0];
+                popup_e6b2847a085c4892a208c0e046022095.setContent(html_ab3f5b47d2ca8e5d064318aabe1c7b7f);
+            
+        
+
+        circle_fb38f9042ceec9c5a0ce5745901c2d6d.bindPopup(popup_e6b2847a085c4892a208c0e046022095)
+        ;
+
+        
+    
+    
+            circle_fb38f9042ceec9c5a0ce5745901c2d6d.bindTooltip(
+                `<div>
+                     札幌市手稲区: 14,373人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_2c6baefa82633637349d8670223f5a7b = L.circle(
+                [42.9992, 141.4489],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2015.853720609238, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_7bc1cb562aad118ee9ce3b5b63482bd9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0f1bbc3964af76fd7fc86bbfa7a32d24 = $(`<div id="html_0f1bbc3964af76fd7fc86bbfa7a32d24" style="width: 100.0%; height: 100.0%;"><b>札幌市清田区</b><br>観光者数: 1,888人</div>`)[0];
+                popup_7bc1cb562aad118ee9ce3b5b63482bd9.setContent(html_0f1bbc3964af76fd7fc86bbfa7a32d24);
+            
+        
+
+        circle_2c6baefa82633637349d8670223f5a7b.bindPopup(popup_7bc1cb562aad118ee9ce3b5b63482bd9)
+        ;
+
+        
+    
+    
+            circle_2c6baefa82633637349d8670223f5a7b.bindTooltip(
+                `<div>
+                     札幌市清田区: 1,888人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_816e3dd993dd487c44f571612e5e7db3 = L.circle(
+                [41.7688, 140.7289],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10299.400283241164, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_a041178bd58183833f2ca90f4c71da6d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e269743b89b096d4b0cc592a8a4f9671 = $(`<div id="html_e269743b89b096d4b0cc592a8a4f9671" style="width: 100.0%; height: 100.0%;"><b>函館市</b><br>観光者数: 186,330人</div>`)[0];
+                popup_a041178bd58183833f2ca90f4c71da6d.setContent(html_e269743b89b096d4b0cc592a8a4f9671);
+            
+        
+
+        circle_816e3dd993dd487c44f571612e5e7db3.bindPopup(popup_a041178bd58183833f2ca90f4c71da6d)
+        ;
+
+        
+    
+    
+            circle_816e3dd993dd487c44f571612e5e7db3.bindTooltip(
+                `<div>
+                     函館市: 186,330人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_355e1847e69e8f4d49d3776170725780 = L.circle(
+                [43.1907, 140.9946],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7522.663784353471, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_4e2261170aa3d51f68c502ebed84ba2d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_90a1eb13419851c6538a5a1ab7cc52a8 = $(`<div id="html_90a1eb13419851c6538a5a1ab7cc52a8" style="width: 100.0%; height: 100.0%;"><b>小樽市</b><br>観光者数: 124,503人</div>`)[0];
+                popup_4e2261170aa3d51f68c502ebed84ba2d.setContent(html_90a1eb13419851c6538a5a1ab7cc52a8);
+            
+        
+
+        circle_355e1847e69e8f4d49d3776170725780.bindPopup(popup_4e2261170aa3d51f68c502ebed84ba2d)
+        ;
+
+        
+    
+    
+            circle_355e1847e69e8f4d49d3776170725780.bindTooltip(
+                `<div>
+                     小樽市: 124,503人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_5c5b7d0c3cf9260e5e31c0ff10ff0e77 = L.circle(
+                [43.7706, 142.365],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13185.361282190239, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_e1d9f927a39e64a8658280d9127811ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5bafcca15d1abfae1dc877547611d34 = $(`<div id="html_b5bafcca15d1abfae1dc877547611d34" style="width: 100.0%; height: 100.0%;"><b>旭川市</b><br>観光者数: 250,589人</div>`)[0];
+                popup_e1d9f927a39e64a8658280d9127811ab.setContent(html_b5bafcca15d1abfae1dc877547611d34);
+            
+        
+
+        circle_5c5b7d0c3cf9260e5e31c0ff10ff0e77.bindPopup(popup_e1d9f927a39e64a8658280d9127811ab)
+        ;
+
+        
+    
+    
+            circle_5c5b7d0c3cf9260e5e31c0ff10ff0e77.bindTooltip(
+                `<div>
+                     旭川市: 250,589人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_9f70ad08925ce268e7a71bedcaf98d8b = L.circle(
+                [42.315, 140.9739],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3166.1242368806343, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_c2619891f5a4103fafe6d4a49908c813 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aa59419837bc44d932d0faace0844718 = $(`<div id="html_aa59419837bc44d932d0faace0844718" style="width: 100.0%; height: 100.0%;"><b>室蘭市</b><br>観光者数: 27,500人</div>`)[0];
+                popup_c2619891f5a4103fafe6d4a49908c813.setContent(html_aa59419837bc44d932d0faace0844718);
+            
+        
+
+        circle_9f70ad08925ce268e7a71bedcaf98d8b.bindPopup(popup_c2619891f5a4103fafe6d4a49908c813)
+        ;
+
+        
+    
+    
+            circle_9f70ad08925ce268e7a71bedcaf98d8b.bindTooltip(
+                `<div>
+                     室蘭市: 27,500人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f59f67fa6a8746ce93b61f26448a43c9 = L.circle(
+                [42.9849, 144.382],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6432.260150722624, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_6ed75ce401c15ffed0f472a7a9547cd2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_079e137795c1f9cfaa629ff15ea42ede = $(`<div id="html_079e137795c1f9cfaa629ff15ea42ede" style="width: 100.0%; height: 100.0%;"><b>釧路市</b><br>観光者数: 100,224人</div>`)[0];
+                popup_6ed75ce401c15ffed0f472a7a9547cd2.setContent(html_079e137795c1f9cfaa629ff15ea42ede);
+            
+        
+
+        circle_f59f67fa6a8746ce93b61f26448a43c9.bindPopup(popup_6ed75ce401c15ffed0f472a7a9547cd2)
+        ;
+
+        
+    
+    
+            circle_f59f67fa6a8746ce93b61f26448a43c9.bindTooltip(
+                `<div>
+                     釧路市: 100,224人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a85ce54e8ed314ebfd6751a55b65449b = L.circle(
+                [42.9236, 143.1946],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5703.842319104408, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_0a62325b30e926e72066e6a4d81a6456 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_afc571f500ed921e3f490fb2526147b7 = $(`<div id="html_afc571f500ed921e3f490fb2526147b7" style="width: 100.0%; height: 100.0%;"><b>帯広市</b><br>観光者数: 84,005人</div>`)[0];
+                popup_0a62325b30e926e72066e6a4d81a6456.setContent(html_afc571f500ed921e3f490fb2526147b7);
+            
+        
+
+        circle_a85ce54e8ed314ebfd6751a55b65449b.bindPopup(popup_0a62325b30e926e72066e6a4d81a6456)
+        ;
+
+        
+    
+    
+            circle_a85ce54e8ed314ebfd6751a55b65449b.bindTooltip(
+                `<div>
+                     帯広市: 84,005人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6ef261ce0bb4c6dc3fabb9af2d56b8e5 = L.circle(
+                [43.8039, 143.8965],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4928.1327939974435, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_3fec4d6c5c9cc44f7eba20f7f76fef9b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_65077a7b33d7e26caf03f5da80d49afd = $(`<div id="html_65077a7b33d7e26caf03f5da80d49afd" style="width: 100.0%; height: 100.0%;"><b>北見市</b><br>観光者数: 66,733人</div>`)[0];
+                popup_3fec4d6c5c9cc44f7eba20f7f76fef9b.setContent(html_65077a7b33d7e26caf03f5da80d49afd);
+            
+        
+
+        circle_6ef261ce0bb4c6dc3fabb9af2d56b8e5.bindPopup(popup_3fec4d6c5c9cc44f7eba20f7f76fef9b)
+        ;
+
+        
+    
+    
+            circle_6ef261ce0bb4c6dc3fabb9af2d56b8e5.bindTooltip(
+                `<div>
+                     北見市: 66,733人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_ec14f2759a09f1db3461cb48e8b49e1a = L.circle(
+                [43.0596, 141.9743],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3353.0005299544, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_81b0c17c7692b82087dac01adc4aaa26 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e25ca474b2ede94378ba42dd2e0b7387 = $(`<div id="html_e25ca474b2ede94378ba42dd2e0b7387" style="width: 100.0%; height: 100.0%;"><b>夕張市</b><br>観光者数: 31,661人</div>`)[0];
+                popup_81b0c17c7692b82087dac01adc4aaa26.setContent(html_e25ca474b2ede94378ba42dd2e0b7387);
+            
+        
+
+        circle_ec14f2759a09f1db3461cb48e8b49e1a.bindPopup(popup_81b0c17c7692b82087dac01adc4aaa26)
+        ;
+
+        
+    
+    
+            circle_ec14f2759a09f1db3461cb48e8b49e1a.bindTooltip(
+                `<div>
+                     夕張市: 31,661人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a9537d1a74fa14ebad542185dd4c0763 = L.circle(
+                [43.1963, 141.775],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4402.489887452057, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_4e76730f3ed9277749433f7d5c3f5e0e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_916f5e8fd56da8b946f4c33a1bd6febf = $(`<div id="html_916f5e8fd56da8b946f4c33a1bd6febf" style="width: 100.0%; height: 100.0%;"><b>岩見沢市</b><br>観光者数: 55,029人</div>`)[0];
+                popup_4e76730f3ed9277749433f7d5c3f5e0e.setContent(html_916f5e8fd56da8b946f4c33a1bd6febf);
+            
+        
+
+        circle_a9537d1a74fa14ebad542185dd4c0763.bindPopup(popup_4e76730f3ed9277749433f7d5c3f5e0e)
+        ;
+
+        
+    
+    
+            circle_a9537d1a74fa14ebad542185dd4c0763.bindTooltip(
+                `<div>
+                     岩見沢市: 55,029人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_20014a9837f6ffd2993bc824564c989e = L.circle(
+                [44.0206, 144.2737],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5356.946744073943, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_6c5fa0d2bed9940b86eb947a7ab71871 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_52c0a2524ec8cbed4f78dc0022c1719b = $(`<div id="html_52c0a2524ec8cbed4f78dc0022c1719b" style="width: 100.0%; height: 100.0%;"><b>網走市</b><br>観光者数: 76,281人</div>`)[0];
+                popup_6c5fa0d2bed9940b86eb947a7ab71871.setContent(html_52c0a2524ec8cbed4f78dc0022c1719b);
+            
+        
+
+        circle_20014a9837f6ffd2993bc824564c989e.bindPopup(popup_6c5fa0d2bed9940b86eb947a7ab71871)
+        ;
+
+        
+    
+    
+            circle_20014a9837f6ffd2993bc824564c989e.bindTooltip(
+                `<div>
+                     網走市: 76,281人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_2db19b774e0c97aa373bf21958f41327 = L.circle(
+                [43.9358, 141.6372],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3452.748726762098, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_c78233cc4b2c69c873daf6af6c47a119 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_03ca417a5bee5989c612a03defea6f24 = $(`<div id="html_03ca417a5bee5989c612a03defea6f24" style="width: 100.0%; height: 100.0%;"><b>留萌市</b><br>観光者数: 33,882人</div>`)[0];
+                popup_c78233cc4b2c69c873daf6af6c47a119.setContent(html_03ca417a5bee5989c612a03defea6f24);
+            
+        
+
+        circle_2db19b774e0c97aa373bf21958f41327.bindPopup(popup_c78233cc4b2c69c873daf6af6c47a119)
+        ;
+
+        
+    
+    
+            circle_2db19b774e0c97aa373bf21958f41327.bindTooltip(
+                `<div>
+                     留萌市: 33,882人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_ed8239399738726a8cb9f4bf0269fcb1 = L.circle(
+                [42.6341, 141.6061],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6606.875634373381, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_2bca8f1d07cb6cbf54444dc1eeee2d1a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0c2d0c54a89ea04d9a6d8196d46bea24 = $(`<div id="html_0c2d0c54a89ea04d9a6d8196d46bea24" style="width: 100.0%; height: 100.0%;"><b>苫小牧市</b><br>観光者数: 104,112人</div>`)[0];
+                popup_2bca8f1d07cb6cbf54444dc1eeee2d1a.setContent(html_0c2d0c54a89ea04d9a6d8196d46bea24);
+            
+        
+
+        circle_ed8239399738726a8cb9f4bf0269fcb1.bindPopup(popup_2bca8f1d07cb6cbf54444dc1eeee2d1a)
+        ;
+
+        
+    
+    
+            circle_ed8239399738726a8cb9f4bf0269fcb1.bindTooltip(
+                `<div>
+                     苫小牧市: 104,112人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_3055ab234a3504451ce5343ccea1db2e = L.circle(
+                [45.4159, 141.6739],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4314.328829219949, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_377607b9dfa5b2b15e2d2652bac9542a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bba800510987aef794210d5563818d6c = $(`<div id="html_bba800510987aef794210d5563818d6c" style="width: 100.0%; height: 100.0%;"><b>稚内市</b><br>観光者数: 53,066人</div>`)[0];
+                popup_377607b9dfa5b2b15e2d2652bac9542a.setContent(html_bba800510987aef794210d5563818d6c);
+            
+        
+
+        circle_3055ab234a3504451ce5343ccea1db2e.bindPopup(popup_377607b9dfa5b2b15e2d2652bac9542a)
+        ;
+
+        
+    
+    
+            circle_3055ab234a3504451ce5343ccea1db2e.bindTooltip(
+                `<div>
+                     稚内市: 53,066人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_3c44b27fbdf1640f8b4b68bf7dbb2244 = L.circle(
+                [43.3326, 141.8513],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2230.9792778847336, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_1d5d72493d64b7cad2c97cac34f91e13 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3a57f17bbe642af7d0c0abaa0bd589f5 = $(`<div id="html_3a57f17bbe642af7d0c0abaa0bd589f5" style="width: 100.0%; height: 100.0%;"><b>美唄市</b><br>観光者数: 6,678人</div>`)[0];
+                popup_1d5d72493d64b7cad2c97cac34f91e13.setContent(html_3a57f17bbe642af7d0c0abaa0bd589f5);
+            
+        
+
+        circle_3c44b27fbdf1640f8b4b68bf7dbb2244.bindPopup(popup_1d5d72493d64b7cad2c97cac34f91e13)
+        ;
+
+        
+    
+    
+            circle_3c44b27fbdf1640f8b4b68bf7dbb2244.bindTooltip(
+                `<div>
+                     美唄市: 6,678人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b124a0f7917d48d7d7e15650f404df84 = L.circle(
+                [43.5203, 142.1894],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3743.7745328466935, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_b503525c9abcc8f2d328c5fb0de14554 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b86ddcf3822b29d4b217240f5b6a76d = $(`<div id="html_5b86ddcf3822b29d4b217240f5b6a76d" style="width: 100.0%; height: 100.0%;"><b>芦別市</b><br>観光者数: 40,362人</div>`)[0];
+                popup_b503525c9abcc8f2d328c5fb0de14554.setContent(html_5b86ddcf3822b29d4b217240f5b6a76d);
+            
+        
+
+        circle_b124a0f7917d48d7d7e15650f404df84.bindPopup(popup_b503525c9abcc8f2d328c5fb0de14554)
+        ;
+
+        
+    
+    
+            circle_b124a0f7917d48d7d7e15650f404df84.bindTooltip(
+                `<div>
+                     芦別市: 40,362人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_94836d8ea82d219a727b2ced76c34ed0 = L.circle(
+                [43.1036, 141.537],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2848.2863310688012, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_c16ab96b5b3b0e64365cdb68330d7f61 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64a3d760014c3971f839d74f2a482eee = $(`<div id="html_64a3d760014c3971f839d74f2a482eee" style="width: 100.0%; height: 100.0%;"><b>江別市</b><br>観光者数: 20,423人</div>`)[0];
+                popup_c16ab96b5b3b0e64365cdb68330d7f61.setContent(html_64a3d760014c3971f839d74f2a482eee);
+            
+        
+
+        circle_94836d8ea82d219a727b2ced76c34ed0.bindPopup(popup_c16ab96b5b3b0e64365cdb68330d7f61)
+        ;
+
+        
+    
+    
+            circle_94836d8ea82d219a727b2ced76c34ed0.bindTooltip(
+                `<div>
+                     江別市: 20,423人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_ff3c726d30f098f0818c17bf0e8dd9d5 = L.circle(
+                [43.5581, 142.0441],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2000.0, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_1c57d2b38421f4466f5e6ad35c3a4aee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0b7e5dabaedcaca0bee2fce2fa3075e8 = $(`<div id="html_0b7e5dabaedcaca0bee2fce2fa3075e8" style="width: 100.0%; height: 100.0%;"><b>赤平市</b><br>観光者数: 1,535人</div>`)[0];
+                popup_1c57d2b38421f4466f5e6ad35c3a4aee.setContent(html_0b7e5dabaedcaca0bee2fce2fa3075e8);
+            
+        
+
+        circle_ff3c726d30f098f0818c17bf0e8dd9d5.bindPopup(popup_1c57d2b38421f4466f5e6ad35c3a4aee)
+        ;
+
+        
+    
+    
+            circle_ff3c726d30f098f0818c17bf0e8dd9d5.bindTooltip(
+                `<div>
+                     赤平市: 1,535人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e93edbbbd9086fd1ff130a99c05310e2 = L.circle(
+                [44.3552, 143.3543],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3117.844492815675, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_41b1b2b212c9d8854b03c961ba2a27b6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fcfae4c2c5e9c6bf376814e5441e2248 = $(`<div id="html_fcfae4c2c5e9c6bf376814e5441e2248" style="width: 100.0%; height: 100.0%;"><b>紋別市</b><br>観光者数: 26,425人</div>`)[0];
+                popup_41b1b2b212c9d8854b03c961ba2a27b6.setContent(html_fcfae4c2c5e9c6bf376814e5441e2248);
+            
+        
+
+        circle_e93edbbbd9086fd1ff130a99c05310e2.bindPopup(popup_41b1b2b212c9d8854b03c961ba2a27b6)
+        ;
+
+        
+    
+    
+            circle_e93edbbbd9086fd1ff130a99c05310e2.bindTooltip(
+                `<div>
+                     紋別市: 26,425人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e689c184c8f7ad644f13ceefcf291e0e = L.circle(
+                [44.1795, 142.4017],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2019.356809015812, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_9f63b3c44900d851a67e2e7783fee1e4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_78713fcab0f66cc4f1e8f2d6ab3884a4 = $(`<div id="html_78713fcab0f66cc4f1e8f2d6ab3884a4" style="width: 100.0%; height: 100.0%;"><b>士別市</b><br>観光者数: 1,966人</div>`)[0];
+                popup_9f63b3c44900d851a67e2e7783fee1e4.setContent(html_78713fcab0f66cc4f1e8f2d6ab3884a4);
+            
+        
+
+        circle_e689c184c8f7ad644f13ceefcf291e0e.bindPopup(popup_9f63b3c44900d851a67e2e7783fee1e4)
+        ;
+
+        
+    
+    
+            circle_e689c184c8f7ad644f13ceefcf291e0e.bindTooltip(
+                `<div>
+                     士別市: 1,966人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_177672f9cdd2299015035f68be9a1497 = L.circle(
+                [44.3556, 142.4633],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3648.2929180726424, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_1aba79accbd75bbef6011cc096fe6f59 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_757c289bdfb4f7dc6b32e5aa6dc5b7d8 = $(`<div id="html_757c289bdfb4f7dc6b32e5aa6dc5b7d8" style="width: 100.0%; height: 100.0%;"><b>名寄市</b><br>観光者数: 38,236人</div>`)[0];
+                popup_1aba79accbd75bbef6011cc096fe6f59.setContent(html_757c289bdfb4f7dc6b32e5aa6dc5b7d8);
+            
+        
+
+        circle_177672f9cdd2299015035f68be9a1497.bindPopup(popup_1aba79accbd75bbef6011cc096fe6f59)
+        ;
+
+        
+    
+    
+            circle_177672f9cdd2299015035f68be9a1497.bindTooltip(
+                `<div>
+                     名寄市: 38,236人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e7027dc1b80453995839fb4a1ac13dfd = L.circle(
+                [43.2456, 141.8765],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4732.723336856383, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_2c3bf33ee86a8695de22cd960aab4a48 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4c540c5f7e5c3923b09fb61b47cf13a4 = $(`<div id="html_4c540c5f7e5c3923b09fb61b47cf13a4" style="width: 100.0%; height: 100.0%;"><b>三笠市</b><br>観光者数: 62,382人</div>`)[0];
+                popup_2c3bf33ee86a8695de22cd960aab4a48.setContent(html_4c540c5f7e5c3923b09fb61b47cf13a4);
+            
+        
+
+        circle_e7027dc1b80453995839fb4a1ac13dfd.bindPopup(popup_2c3bf33ee86a8695de22cd960aab4a48)
+        ;
+
+        
+    
+    
+            circle_e7027dc1b80453995839fb4a1ac13dfd.bindTooltip(
+                `<div>
+                     三笠市: 62,382人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_099ee1dec3803066a290c4a1e3334143 = L.circle(
+                [43.3289, 145.5857],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3366.1146557841375, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_d37c2b63ea36d2437edf3b76df0ed5a6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_82c9519e4ebb4275fcb5b2c9d9c753ab = $(`<div id="html_82c9519e4ebb4275fcb5b2c9d9c753ab" style="width: 100.0%; height: 100.0%;"><b>根室市</b><br>観光者数: 31,953人</div>`)[0];
+                popup_d37c2b63ea36d2437edf3b76df0ed5a6.setContent(html_82c9519e4ebb4275fcb5b2c9d9c753ab);
+            
+        
+
+        circle_099ee1dec3803066a290c4a1e3334143.bindPopup(popup_d37c2b63ea36d2437edf3b76df0ed5a6)
+        ;
+
+        
+    
+    
+            circle_099ee1dec3803066a290c4a1e3334143.bindTooltip(
+                `<div>
+                     根室市: 31,953人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_0f51236d7e25ebd8b4ccd4b79839b94a = L.circle(
+                [42.8197, 141.6524],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7061.378899431422, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_567189a108ec1c24b4c41bb1514cafcf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f8f1eda24bbf08d5842ebcb88e21233f = $(`<div id="html_f8f1eda24bbf08d5842ebcb88e21233f" style="width: 100.0%; height: 100.0%;"><b>千歳市</b><br>観光者数: 114,232人</div>`)[0];
+                popup_567189a108ec1c24b4c41bb1514cafcf.setContent(html_f8f1eda24bbf08d5842ebcb88e21233f);
+            
+        
+
+        circle_0f51236d7e25ebd8b4ccd4b79839b94a.bindPopup(popup_567189a108ec1c24b4c41bb1514cafcf)
+        ;
+
+        
+    
+    
+            circle_0f51236d7e25ebd8b4ccd4b79839b94a.bindTooltip(
+                `<div>
+                     千歳市: 114,232人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_cb3cf7895bafe67019585d6754f48976 = L.circle(
+                [43.5566, 141.91],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2657.502747080011, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_ab046993f05eafd97c37103a7fc28ccc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4f090205f831b23f0411e3b271638ecb = $(`<div id="html_4f090205f831b23f0411e3b271638ecb" style="width: 100.0%; height: 100.0%;"><b>滝川市</b><br>観光者数: 16,175人</div>`)[0];
+                popup_ab046993f05eafd97c37103a7fc28ccc.setContent(html_4f090205f831b23f0411e3b271638ecb);
+            
+        
+
+        circle_cb3cf7895bafe67019585d6754f48976.bindPopup(popup_ab046993f05eafd97c37103a7fc28ccc)
+        ;
+
+        
+    
+    
+            circle_cb3cf7895bafe67019585d6754f48976.bindTooltip(
+                `<div>
+                     滝川市: 16,175人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_4837bc186640cd691b8dde50569933bc = L.circle(
+                [43.4952, 141.9034],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2062.651388809878, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_c2da25068d87272ddce82b6a38e4c347 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b5a8b63ece067c6132766e9099e5ed6 = $(`<div id="html_5b5a8b63ece067c6132766e9099e5ed6" style="width: 100.0%; height: 100.0%;"><b>砂川市</b><br>観光者数: 2,930人</div>`)[0];
+                popup_c2da25068d87272ddce82b6a38e4c347.setContent(html_5b5a8b63ece067c6132766e9099e5ed6);
+            
+        
+
+        circle_4837bc186640cd691b8dde50569933bc.bindPopup(popup_c2da25068d87272ddce82b6a38e4c347)
+        ;
+
+        
+    
+    
+            circle_4837bc186640cd691b8dde50569933bc.bindTooltip(
+                `<div>
+                     砂川市: 2,930人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_5c53baa5aea6b1e7307ad0a9341765af = L.circle(
+                [43.5176, 142.0372],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2343.751777742514, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_ab5a4a6bd2d94aac03a25d814fce6a33 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c8d4fb5ebc870973797bd7bfb92dc2af = $(`<div id="html_c8d4fb5ebc870973797bd7bfb92dc2af" style="width: 100.0%; height: 100.0%;"><b>歌志内市</b><br>観光者数: 9,189人</div>`)[0];
+                popup_ab5a4a6bd2d94aac03a25d814fce6a33.setContent(html_c8d4fb5ebc870973797bd7bfb92dc2af);
+            
+        
+
+        circle_5c53baa5aea6b1e7307ad0a9341765af.bindPopup(popup_ab5a4a6bd2d94aac03a25d814fce6a33)
+        ;
+
+        
+    
+    
+            circle_5c53baa5aea6b1e7307ad0a9341765af.bindTooltip(
+                `<div>
+                     歌志内市: 9,189人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a29fa1c05c2a5302f8bf6df64575c77b = L.circle(
+                [43.7212, 142.0545],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4262.7705536975545, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_025e99b7a72556fa93bcd1ffd7664818 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7adb29db934089484d9338233d5cee78 = $(`<div id="html_7adb29db934089484d9338233d5cee78" style="width: 100.0%; height: 100.0%;"><b>深川市</b><br>観光者数: 51,918人</div>`)[0];
+                popup_025e99b7a72556fa93bcd1ffd7664818.setContent(html_7adb29db934089484d9338233d5cee78);
+            
+        
+
+        circle_a29fa1c05c2a5302f8bf6df64575c77b.bindPopup(popup_025e99b7a72556fa93bcd1ffd7664818)
+        ;
+
+        
+    
+    
+            circle_a29fa1c05c2a5302f8bf6df64575c77b.bindTooltip(
+                `<div>
+                     深川市: 51,918人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_4a7f07c3165d6e13407c77dd77d59ad9 = L.circle(
+                [43.3417, 142.3833],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4019.755023338952, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_f82a65f0c2c3420df1152e9202019b00 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5be344be76b699e848127bf87ff944a6 = $(`<div id="html_5be344be76b699e848127bf87ff944a6" style="width: 100.0%; height: 100.0%;"><b>富良野市</b><br>観光者数: 46,507人</div>`)[0];
+                popup_f82a65f0c2c3420df1152e9202019b00.setContent(html_5be344be76b699e848127bf87ff944a6);
+            
+        
+
+        circle_4a7f07c3165d6e13407c77dd77d59ad9.bindPopup(popup_f82a65f0c2c3420df1152e9202019b00)
+        ;
+
+        
+    
+    
+            circle_4a7f07c3165d6e13407c77dd77d59ad9.bindTooltip(
+                `<div>
+                     富良野市: 46,507人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_329fc1898d802004f3704ed1bdab77ec = L.circle(
+                [42.4122, 141.1077],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2813.0758014437515, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_456a13035e324726a10194c338075f27 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a53aaf393a987398bf806ade249b7e8f = $(`<div id="html_a53aaf393a987398bf806ade249b7e8f" style="width: 100.0%; height: 100.0%;"><b>登別市</b><br>観光者数: 19,639人</div>`)[0];
+                popup_456a13035e324726a10194c338075f27.setContent(html_a53aaf393a987398bf806ade249b7e8f);
+            
+        
+
+        circle_329fc1898d802004f3704ed1bdab77ec.bindPopup(popup_456a13035e324726a10194c338075f27)
+        ;
+
+        
+    
+    
+            circle_329fc1898d802004f3704ed1bdab77ec.bindTooltip(
+                `<div>
+                     登別市: 19,639人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_db54eb97a82dffcb3fc915d4bc5431e9 = L.circle(
+                [42.8827, 141.5766],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3558.4252270270754, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_a11fb155e2cb5407b0e75755282792ac = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5543804dffb1c39b7047fa315328b733 = $(`<div id="html_5543804dffb1c39b7047fa315328b733" style="width: 100.0%; height: 100.0%;"><b>恵庭市</b><br>観光者数: 36,235人</div>`)[0];
+                popup_a11fb155e2cb5407b0e75755282792ac.setContent(html_5543804dffb1c39b7047fa315328b733);
+            
+        
+
+        circle_db54eb97a82dffcb3fc915d4bc5431e9.bindPopup(popup_a11fb155e2cb5407b0e75755282792ac)
+        ;
+
+        
+    
+    
+            circle_db54eb97a82dffcb3fc915d4bc5431e9.bindTooltip(
+                `<div>
+                     恵庭市: 36,235人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_c72de96618d4c09c162e28d81b3e9e7b = L.circle(
+                [42.4697, 140.8689],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4042.3454524223707, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_0addd1b5fdfd9a395c2913708f81d2f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ccc70dae9c081f847b935291ac46d360 = $(`<div id="html_ccc70dae9c081f847b935291ac46d360" style="width: 100.0%; height: 100.0%;"><b>伊達市</b><br>観光者数: 47,010人</div>`)[0];
+                popup_0addd1b5fdfd9a395c2913708f81d2f7.setContent(html_ccc70dae9c081f847b935291ac46d360);
+            
+        
+
+        circle_c72de96618d4c09c162e28d81b3e9e7b.bindPopup(popup_0addd1b5fdfd9a395c2913708f81d2f7)
+        ;
+
+        
+    
+    
+            circle_c72de96618d4c09c162e28d81b3e9e7b.bindTooltip(
+                `<div>
+                     伊達市: 47,010人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b346c359f89f9cd4f14b0ce64f2b8528 = L.circle(
+                [42.9862, 141.5643],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31999.95508861017, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_80801b4efde7d237161c74d424d1fe5e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6ba8cd68ca86c4c324a59349f7a58255 = $(`<div id="html_6ba8cd68ca86c4c324a59349f7a58255" style="width: 100.0%; height: 100.0%;"><b>北広島市</b><br>観光者数: 669,516人</div>`)[0];
+                popup_80801b4efde7d237161c74d424d1fe5e.setContent(html_6ba8cd68ca86c4c324a59349f7a58255);
+            
+        
+
+        circle_b346c359f89f9cd4f14b0ce64f2b8528.bindPopup(popup_80801b4efde7d237161c74d424d1fe5e)
+        ;
+
+        
+    
+    
+            circle_b346c359f89f9cd4f14b0ce64f2b8528.bindTooltip(
+                `<div>
+                     北広島市: 669,516人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_199d27dc4e06af7bacdf6a2bfc901b27 = L.circle(
+                [43.1714, 141.3156],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5295.912165297867, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_989590e775d5a3e0e3faf80255a10f12 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ac47578eed6c12b6940769f430a3f113 = $(`<div id="html_ac47578eed6c12b6940769f430a3f113" style="width: 100.0%; height: 100.0%;"><b>石狩市</b><br>観光者数: 74,922人</div>`)[0];
+                popup_989590e775d5a3e0e3faf80255a10f12.setContent(html_ac47578eed6c12b6940769f430a3f113);
+            
+        
+
+        circle_199d27dc4e06af7bacdf6a2bfc901b27.bindPopup(popup_989590e775d5a3e0e3faf80255a10f12)
+        ;
+
+        
+    
+    
+            circle_199d27dc4e06af7bacdf6a2bfc901b27.bindTooltip(
+                `<div>
+                     石狩市: 74,922人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_bdcee7738fb7769aaa480c6557e4dd99 = L.circle(
+                [41.8224, 140.6485],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2230.7098095457663, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_3e589eb52488c6f0f5cd8cdb08249504 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_17467456d0a3944d0d4237ef2629f375 = $(`<div id="html_17467456d0a3944d0d4237ef2629f375" style="width: 100.0%; height: 100.0%;"><b>北斗市</b><br>観光者数: 6,672人</div>`)[0];
+                popup_3e589eb52488c6f0f5cd8cdb08249504.setContent(html_17467456d0a3944d0d4237ef2629f375);
+            
+        
+
+        circle_bdcee7738fb7769aaa480c6557e4dd99.bindPopup(popup_3e589eb52488c6f0f5cd8cdb08249504)
+        ;
+
+        
+    
+    
+            circle_bdcee7738fb7769aaa480c6557e4dd99.bindTooltip(
+                `<div>
+                     北斗市: 6,672人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_7a38e1ed223480e03e52a717610a6648 = L.circle(
+                [40.8244, 140.74],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13962.37323760221, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_005675544c4a74a064818bb99c99b2a9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ec5570fe5fce59a1fef06f0b2d52c604 = $(`<div id="html_ec5570fe5fce59a1fef06f0b2d52c604" style="width: 100.0%; height: 100.0%;"><b>青森市</b><br>観光者数: 267,890人</div>`)[0];
+                popup_005675544c4a74a064818bb99c99b2a9.setContent(html_ec5570fe5fce59a1fef06f0b2d52c604);
+            
+        
+
+        circle_7a38e1ed223480e03e52a717610a6648.bindPopup(popup_005675544c4a74a064818bb99c99b2a9)
+        ;
+
+        
+    
+    
+            circle_7a38e1ed223480e03e52a717610a6648.bindTooltip(
+                `<div>
+                     青森市: 267,890人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f302b01ecde86cccb52d10be18a23741 = L.circle(
+                [40.6031, 140.4639],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8387.522418268756, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_f185ce761c021c444b3aec9bf2d51d7b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2892dae89793701b895a9a4decb12259 = $(`<div id="html_2892dae89793701b895a9a4decb12259" style="width: 100.0%; height: 100.0%;"><b>弘前市</b><br>観光者数: 143,760人</div>`)[0];
+                popup_f185ce761c021c444b3aec9bf2d51d7b.setContent(html_2892dae89793701b895a9a4decb12259);
+            
+        
+
+        circle_f302b01ecde86cccb52d10be18a23741.bindPopup(popup_f185ce761c021c444b3aec9bf2d51d7b)
+        ;
+
+        
+    
+    
+            circle_f302b01ecde86cccb52d10be18a23741.bindTooltip(
+                `<div>
+                     弘前市: 143,760人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a150013f0c4c0d24e6f597544b2ea5a3 = L.circle(
+                [40.5125, 141.4883],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8124.476408046923, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_b5346bad9a40adbf183c4e7eebec42fc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1240348a661734984c319bce43f4623d = $(`<div id="html_1240348a661734984c319bce43f4623d" style="width: 100.0%; height: 100.0%;"><b>八戸市</b><br>観光者数: 137,903人</div>`)[0];
+                popup_b5346bad9a40adbf183c4e7eebec42fc.setContent(html_1240348a661734984c319bce43f4623d);
+            
+        
+
+        circle_a150013f0c4c0d24e6f597544b2ea5a3.bindPopup(popup_b5346bad9a40adbf183c4e7eebec42fc)
+        ;
+
+        
+    
+    
+            circle_a150013f0c4c0d24e6f597544b2ea5a3.bindTooltip(
+                `<div>
+                     八戸市: 137,903人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a007a88323a7d94f561e3c2fd10c2c33 = L.circle(
+                [40.6425, 140.5969],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2769.287196361579, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_edf0583ca9b333051893a355aa409ca3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b3c9325301e52b4d87409b71aa7d7e9 = $(`<div id="html_5b3c9325301e52b4d87409b71aa7d7e9" style="width: 100.0%; height: 100.0%;"><b>黒石市</b><br>観光者数: 18,664人</div>`)[0];
+                popup_edf0583ca9b333051893a355aa409ca3.setContent(html_5b3c9325301e52b4d87409b71aa7d7e9);
+            
+        
+
+        circle_a007a88323a7d94f561e3c2fd10c2c33.bindPopup(popup_edf0583ca9b333051893a355aa409ca3)
+        ;
+
+        
+    
+    
+            circle_a007a88323a7d94f561e3c2fd10c2c33.bindTooltip(
+                `<div>
+                     黒石市: 18,664人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6d02e381d62e66051ad832c0a2aeee34 = L.circle(
+                [40.8072, 140.4408],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3861.0381716872607, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_c072fa57baf69f8eb2f34ecc8437fae6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e3b9144e4942e3fc1484c134f63d22b3 = $(`<div id="html_e3b9144e4942e3fc1484c134f63d22b3" style="width: 100.0%; height: 100.0%;"><b>五所川原市</b><br>観光者数: 42,973人</div>`)[0];
+                popup_c072fa57baf69f8eb2f34ecc8437fae6.setContent(html_e3b9144e4942e3fc1484c134f63d22b3);
+            
+        
+
+        circle_6d02e381d62e66051ad832c0a2aeee34.bindPopup(popup_c072fa57baf69f8eb2f34ecc8437fae6)
+        ;
+
+        
+    
+    
+            circle_6d02e381d62e66051ad832c0a2aeee34.bindTooltip(
+                `<div>
+                     五所川原市: 42,973人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_989c0b968e1a5088e7b7161a4da11a96 = L.circle(
+                [40.6128, 141.2061],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6503.1303238710025, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_828060ba8a66b3fd8a2feec8a83ec0c7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9f42793f36aff539c044fea57b3ac503 = $(`<div id="html_9f42793f36aff539c044fea57b3ac503" style="width: 100.0%; height: 100.0%;"><b>十和田市</b><br>観光者数: 101,802人</div>`)[0];
+                popup_828060ba8a66b3fd8a2feec8a83ec0c7.setContent(html_9f42793f36aff539c044fea57b3ac503);
+            
+        
+
+        circle_989c0b968e1a5088e7b7161a4da11a96.bindPopup(popup_828060ba8a66b3fd8a2feec8a83ec0c7)
+        ;
+
+        
+    
+    
+            circle_989c0b968e1a5088e7b7161a4da11a96.bindTooltip(
+                `<div>
+                     十和田市: 101,802人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f4f28dd1265c1dd107951de58649a325 = L.circle(
+                [40.6833, 141.3689],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3437.1644744918276, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_3eadee560e4dde9469cd2491089420a7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e2d5fab56a331658338eaf5c07344f73 = $(`<div id="html_e2d5fab56a331658338eaf5c07344f73" style="width: 100.0%; height: 100.0%;"><b>三沢市</b><br>観光者数: 33,535人</div>`)[0];
+                popup_3eadee560e4dde9469cd2491089420a7.setContent(html_e2d5fab56a331658338eaf5c07344f73);
+            
+        
+
+        circle_f4f28dd1265c1dd107951de58649a325.bindPopup(popup_3eadee560e4dde9469cd2491089420a7)
+        ;
+
+        
+    
+    
+            circle_f4f28dd1265c1dd107951de58649a325.bindTooltip(
+                `<div>
+                     三沢市: 33,535人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_0a0582de4fea88a7040105386da27847 = L.circle(
+                [41.2928, 141.1836],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4017.778922186526, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_5cc413a2ff44bbdd4c94139e689aabc2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fc4e50b93b635d81a11ec0f75b241ecf = $(`<div id="html_fc4e50b93b635d81a11ec0f75b241ecf" style="width: 100.0%; height: 100.0%;"><b>むつ市</b><br>観光者数: 46,463人</div>`)[0];
+                popup_5cc413a2ff44bbdd4c94139e689aabc2.setContent(html_fc4e50b93b635d81a11ec0f75b241ecf);
+            
+        
+
+        circle_0a0582de4fea88a7040105386da27847.bindPopup(popup_5cc413a2ff44bbdd4c94139e689aabc2)
+        ;
+
+        
+    
+    
+            circle_0a0582de4fea88a7040105386da27847.bindTooltip(
+                `<div>
+                     むつ市: 46,463人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_c49366b6a5c44af03c1406129cbea17e = L.circle(
+                [40.808, 140.3803],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5961.409139767239, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_fed85e6ca1212e4c9ac24178b2358299 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_72f33b0fda469a8b7d091c5636204f33 = $(`<div id="html_72f33b0fda469a8b7d091c5636204f33" style="width: 100.0%; height: 100.0%;"><b>つがる市</b><br>観光者数: 89,740人</div>`)[0];
+                popup_fed85e6ca1212e4c9ac24178b2358299.setContent(html_72f33b0fda469a8b7d091c5636204f33);
+            
+        
+
+        circle_c49366b6a5c44af03c1406129cbea17e.bindPopup(popup_fed85e6ca1212e4c9ac24178b2358299)
+        ;
+
+        
+    
+    
+            circle_c49366b6a5c44af03c1406129cbea17e.bindTooltip(
+                `<div>
+                     つがる市: 89,740人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_9a6fd72379e0822afb482fc2944aa036 = L.circle(
+                [40.5858, 140.5658],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4788.368548853113, "stroke": true, "weight": 3}
+            ).addTo(map_4a7de6658ca1db87c5da9c62e553aaed);
+        
+    
+        var popup_afdd6a6ad73c46202b5eef0c8ecfbc0f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0496adc7f362917fb5985557fcdcefd4 = $(`<div id="html_0496adc7f362917fb5985557fcdcefd4" style="width: 100.0%; height: 100.0%;"><b>平川市</b><br>観光者数: 63,621人</div>`)[0];
+                popup_afdd6a6ad73c46202b5eef0c8ecfbc0f.setContent(html_0496adc7f362917fb5985557fcdcefd4);
+            
+        
+
+        circle_9a6fd72379e0822afb482fc2944aa036.bindPopup(popup_afdd6a6ad73c46202b5eef0c8ecfbc0f)
+        ;
+
+        
+    
+    
+            circle_9a6fd72379e0822afb482fc2944aa036.bindTooltip(
+                `<div>
+                     平川市: 63,621人
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
